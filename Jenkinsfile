@@ -10,10 +10,20 @@ pipeline {
     }
     post {
         success {
-            githubNotify status: 'SUCCESS', description: 'Build passed'
+            githubNotify credentialsId: 'github-token',
+                         account: 'William-SPD',
+                         repo: 'jenkins-test',
+                         sha: env.GIT_COMMIT,
+                         status: 'SUCCESS',
+                         description: 'Build passed'
         }
         failure {
-            githubNotify status: 'FAILURE', description: 'Build failed'
+            githubNotify credentialsId: 'github-token',
+                         account: 'William-SPD',
+                         repo: 'jenkins-test',
+                         sha: env.GIT_COMMIT,
+                         status: 'FAILURE',
+                         description: 'Build failed'
         }
     }
 }
