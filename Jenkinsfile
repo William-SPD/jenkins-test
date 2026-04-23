@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo 'Webhook triggered successfully'
                 sh 'echo hello from jenkins'
+                error 'Simulated failure'
             }
         }
     }
